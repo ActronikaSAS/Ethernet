@@ -11,9 +11,16 @@ teensy_eth_cppflags = [
     '-Wno-non-virtual-dtor',
     ]
 
-teensy_eth_incdir = include_directories('.')
+teensy_eth_incdir = include_directories('src')
 teensy_eth_src = [
-    'i2c_t3.cpp',
+    'src/Dhcp.cpp',
+    'src/Dns.cpp',
+    'src/Ethernet.cpp',
+    'src/EthernetClient.cpp',
+    'src/EthernetServer.cpp',
+    'src/EthernetUdp.cpp',
+    'src/socket.cpp',
+    'src/utility/w5100.cpp',
   ]
 
 teensy_ethernet = static_library('teensy-ethernet', teensy_eth_src,
