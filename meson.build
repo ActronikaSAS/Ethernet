@@ -1,10 +1,12 @@
-project('teensy-ethernet', 'cpp', 'c',
+project('Ethernet', 'cpp', 'c',
     version : '1.0')
 
 assert(meson.is_cross_build(), 'Teensy projects can only be built in a cross build environment.')
 
 teensy_core_dep = dependency('teensy-core',
     fallback: ['teensy-core', 'teensy_core_dep'])
+teensy_spi_dep = dependency('teensy-spi',
+    fallback: ['teensy-spi', 'teensy_spi_dep'])
 
 teensy_eth_cppflags = [
     #too many warnings due to non virtual dtor in teesy-core
@@ -23,10 +25,10 @@ teensy_eth_src = [
     'src/utility/w5100.cpp',
   ]
 
-teensy_ethernet = static_library('teensy-ethernet', teensy_eth_src,
+teensy_ethernet = static_library('Ethernet', teensy_eth_src,
     include_directories : teensy_eth_incdir,
     cpp_args : teensy_eth_cppflags,
-    dependencies : [teensy_core_dep])
+    dependencies : [teensy_core_dep, teensy_spi_dep])
 
 teensy_ethernet_dep = declare_dependency(
     link_with : teensy_ethernet,
