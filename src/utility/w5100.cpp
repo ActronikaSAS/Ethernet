@@ -88,7 +88,7 @@ uint8_t W5100Class::init(void)
 	static bool initialized = false;
 	uint8_t i;
 
-	if (initialized) return 1;
+	// if (initialized) return 1;
 
 	// Many Ethernet shields have a CAT811 or similar reset chip
 	// connected to W5100 or W5200 chips.  The W5200 will not work at
